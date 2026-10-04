@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Fathul Majyid Academy Kafur Student Result Portal.">
+  <meta name="robots" content="noindex, nofollow">
+
+  <title>Student Result Portal | Fathul Majyid Academy Kafur</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7ef;
+      color: #222;
+      min-height: 100vh;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #3d0d63, #6a1b9a);
+      color: white;
+      padding: 28px 20px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .header p {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    .container {
+      width: min(92%, 520px);
+      margin: 45px auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 30px 24px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .card h2 {
+      color: #5a1c7d;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .intro {
+      text-align: center;
+      color: #666;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #374151;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #6a1b9a;
+      box-shadow: 0 0 0 3px rgba(106, 27, 154, 0.1);
+    }
+
+    .button {
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      padding: 14px;
+      background: #6a1b9a;
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background: #5a1c7d;
+    }
+
+    .notice {
+      margin-top: 20px;
+      padding: 14px;
+      border-radius: 10px;
+      background: #eff9e8;
+      color: #4b6f22;
+      font-size: 13px;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .back {
+      display: block;
+      text-align: center;
+      margin-top: 22px;
+      color: #6a1b9a;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px 15px;
+      color: #777;
+      font-size: 13px;
+    }
+
+    @media (max-width: 480px) {
+      .header h1 {
+        font-size: 22px;
+      }
+
+      .card {
+        padding: 24px 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+    <h1>Fathul Majyid Academy Kafur</h1>
+    <p>Inculcating moral values towards Islam</p>
+  </header>
+
+  <main class="container">
+    <div class="card">
+
+      <h2>Student Result Portal</h2>
+
+      <p class="intro">
+        Enter your admission number and password/PIN to access your academic result.
+      </p>
+
+      <form>
+        <div class="form-group">
+          <label for="admission">Admission Number</label>
+          <input
+            type="text"
+            id="admission"
+            name="admission"
+            placeholder="Enter admission number"
+            autocomplete="off"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password / PIN</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter password or PIN"
+            autocomplete="off"
+            required
+          >
+        </div>
+
+        <button type="submit" class="button">
+          Check Result
+        </button>
+      </form>
+
+      <div class="notice">
+        Results will only be displayed after they have been published by the school.
+      </div>
+
+      <a class="back" href="index.html">
+        ← Back to School Website
+      </a>
+
+    </div>
+  </main>
+
+  <footer>
+    © 2026 Fathul Majyid Academy Kafur
+  </footer>
+
+</body>
+</html>
