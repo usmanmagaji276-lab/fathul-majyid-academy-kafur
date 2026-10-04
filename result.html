@@ -206,6 +206,140 @@
   <footer>
     © 2026 Fathul Majyid Academy Kafur
   </footer>
+<script>
+  const SUPABASE_URL = "https://mfiqepwoiyhgcdwwkllw.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_loYlWh9V7NYcVpruWf3dCg_7JhYNZ0x";
 
+  const form = document.querySelector("form");
+  const message = document.getElementById("loginMessage");
+
+  form.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const admissionNumber =
+      document.getElementById("admission").value.trim();
+
+    const pin =
+      document.getElementById("password").value.trim();
+
+    const button = document.querySelector(".button");
+
+    if (!admissionNumber || !pin) {
+      message.textContent = "Please enter your admission number and PIN.";
+      return;
+    }
+
+    button.disabled = true;
+    button.textContent = "Checking...";
+    message.textContent = "";
+
+    try {
+      const response = await fetch(
+        SUPABASE_URL + "/functions/v1/index",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "apikey": SUPABASE_KEY,
+            "Authorization": "Bearer " + SUPABASE_KEY
+          },
+          body: JSON.stringify({
+            admission_number: admissionNumber,
+            pin: pin
+          })
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        message.textContent =
+          data.error || "Invalid admission number or PIN.";
+        return;
+      }
+
+      const student = data.student;
+      const results = data.results || [];
+
+      document.querySelector(".card").innerHTML = `
+        <h2>Student Result</h2>
+
+        <div style="text-align:center;margin:20px 0;">
+          ${
+            student.photo_url
+              ? `<img src="${student.photo_url}"
+                  style="width:90px;height:90px;border-radius:50%;object-fit:cover;">`
+              : ""
+          }
+
+          <h3 style="margin-top:12px;color:#5a1c7d;">
+            ${student.full_name}
+          </h3>
+
+          <p>Admission No: ${student.admission_number}</p>
+          <p>Class: ${student.class_name}</p>
+          <p>Level: ${student.level}</p>
+        </div>
+
+        <div style="overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;margin-top:20px;">
+            <thead>
+              <tr style="background:#6a1b9a;color:white;">
+                <th style="padding:10px;">Subject</th>
+                <th style="padding:10px;">CA</th>
+                <th style="padding:10px;">Exam</th>
+                <th style="padding:10px;">Total</th>
+                <th style="padding:10px;">Grade</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              ${
+                results.length
+                  ? results.map(result => `
+                    <tr>
+                      <td style="padding:10px;border-bottom:1px solid #ddd;">
+                        ${result.subject}
+                      </td>
+                      <td style="padding:10px;border-bottom:1px solid #ddd;">
+                        ${result.ca ?? ""}
+                      </td>
+                      <td style="padding:10px;border-bottom:1px solid #ddd;">
+                        ${result.exam ?? ""}
+                      </td>
+                      <td style="padding:10px;border-bottom:1px solid #ddd;">
+                        ${result.total ?? ""}
+                      </td>
+                      <td style="padding:10px;border-bottom:1px solid #ddd;">
+                        ${result.grade ?? ""}
+                      </td>
+                    </tr>
+                  `).join("")
+                  : `
+                    <tr>
+                      <td colspan="5" style="padding:20px;text-align:center;">
+                        No published results found.
+                      </td>
+                    </tr>
+                  `
+              }
+            </tbody>
+          </table>
+        </div>
+
+        <a class="back" href="result.html">
+          ← Back to Login
+        </a>
+      `;
+
+    } catch (error) {
+      message.textContent =
+        "Unable to connect to the result system. Please try again.";
+    } finally {
+      button.disabled = false;
+      button.textContent = "Check Result";
+    }
+  });
+</script>
 </body>
 </html>
