@@ -50,3 +50,1205 @@
   </script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+    :root {
+      --violet-900: #3d0d63;
+      --violet-700: #5a1c7d;
+      --violet-500: #6a1b9a;
+      --green-500: #8bc34a;
+      --green-600: #6fa826;
+      --green-100: #eff9e8;
+      --cream-50: #f9f7fb;
+      --white: #ffffff;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-500: #6b7280;
+      --gray-700: #374151;
+      --gray-900: #111827;
+      --shadow-soft: 0 20px 45px rgba(34, 12, 50, 0.08);
+      --shadow-card: 0 18px 38px rgba(25, 18, 36, 0.08);
+      --radius-lg: 26px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
+      --container: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Manrope', Arial, sans-serif;
+      background: #f7f7fb;
+      color: var(--gray-900);
+      line-height: 1.7;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: linear-gradient(135deg, var(--violet-900), var(--violet-500));
+      color: var(--white);
+      padding: 18px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .topbar::after {
+      content: "";
+      position: absolute;
+      inset: auto -40px -60px auto;
+      width: 180px;
+      height: 180px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 50%;
+    }
+
+    .topbar-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-mark {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      font-size: 1.4rem;
+      font-weight: 800;
+    }
+
+    .brand-text h1 {
+      font-size: clamp(1.1rem, 2vw, 1.7rem);
+      line-height: 1.2;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-text p {
+      font-size: 0.8rem;
+      opacity: 0.9;
+      margin-top: 4px;
+    }
+
+    .topbar-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.9rem;
+    }
+
+    .topbar-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .navbar {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(90, 28, 125, 0.08);
+      box-shadow: 0 8px 24px rgba(17, 24, 39, 0.04);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 74px;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--gray-700);
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 10px 14px;
+      border-radius: 999px;
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--violet-500);
+      background: rgba(106, 27, 154, 0.08);
+      outline: none;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--violet-500), var(--green-500));
+      color: var(--white);
+      font-weight: 800;
+      box-shadow: 0 12px 24px rgba(106, 27, 154, 0.2);
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #f6effb 0%, #edf8eb 100%);
+      padding: 84px 0 54px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      z-index: 0;
+    }
+
+    .hero::before {
+      width: 420px;
+      height: 420px;
+      right: -150px;
+      top: -120px;
+      background: rgba(106, 27, 154, 0.08);
+    }
+
+    .hero::after {
+      width: 360px;
+      height: 360px;
+      left: -100px;
+      bottom: -100px;
+      background: rgba(139, 195, 74, 0.14);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 42px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--violet-700);
+      background: rgba(106, 27, 154, 0.08);
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(106, 27, 154, 0.08);
+    }
+
+    .hero-copy h2 {
+      font-size: clamp(2.3rem, 5vw, 4.6rem);
+      line-height: 1.05;
+      letter-spacing: -0.055em;
+      color: var(--gray-900);
+      margin-top: 22px;
+      max-width: 620px;
+    }
+
+    .hero-copy h2 .accent {
+      color: var(--violet-500);
+    }
+
+    .hero-copy p {
+      max-width: 640px;
+      margin-top: 20px;
+      font-size: 1.08rem;
+      color: var(--gray-700);
+    }
+
+    .hero-actions {
+      margin-top: 30px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 0 25px;
+      font-weight: 800;
+      border-radius: 999px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 32px rgba(106, 27, 154, 0.16);
+      outline: none;
+    }
+
+    .button-primary {
+      background: linear-gradient(135deg, var(--violet-500), var(--green-500));
+      color: var(--white);
+    }
+
+    .button-secondary {
+      background: rgba(255, 255, 255, 0.7);
+      color: var(--violet-700);
+      border: 1px solid rgba(106, 27, 154, 0.15);
+    }
+
+    .hero-stats {
+      margin-top: 34px;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      min-width: 120px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.8rem;
+      color: var(--violet-500);
+      line-height: 1.1;
+    }
+
+    .stat span {
+      font-size: 0.85rem;
+      color: var(--gray-700);
+    }
+
+    .hero-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.75));
+      border: 1px solid rgba(60, 39, 76, 0.08);
+      box-shadow: var(--shadow-soft);
+      padding: 28px;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 8px;
+      background: linear-gradient(90deg, var(--violet-500), var(--green-500));
+    }
+
+    .mini-panel {
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(106, 27, 154, 0.08);
+      border-radius: 18px;
+      padding: 18px 20px;
+      margin-bottom: 18px;
+    }
+
+    .mini-panel .label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--violet-700);
+      font-weight: 800;
+    }
+
+    .mini-panel strong {
+      display: block;
+      margin-top: 8px;
+      color: var(--gray-900);
+      font-size: clamp(1.4rem, 2vw, 2.1rem);
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+    }
+
+    .mini-panel p {
+      margin-top: 10px;
+      color: var(--gray-700);
+      font-size: 0.96rem;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .info-box {
+      background: linear-gradient(135deg, rgba(106, 27, 154, 0.08), rgba(139, 195, 74, 0.08));
+      border: 1px solid rgba(106, 27, 154, 0.08);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .info-box span {
+      display: block;
+      font-weight: 800;
+      color: var(--violet-500);
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .info-box p {
+      font-size: 0.95rem;
+      color: var(--gray-700);
+    }
+
+    section {
+      padding: 92px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-header small {
+      display: inline-block;
+      color: var(--violet-700);
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+    }
+
+    .section-header h3 {
+      margin-top: 10px;
+      color: var(--gray-900);
+      font-size: clamp(2rem, 3vw, 3rem);
+      line-height: 1.15;
+      letter-spacing: -0.05em;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .feature-card {
+      background: var(--white);
+      border: 1px solid rgba(106, 27, 154, 0.06);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      padding: 30px;
+    }
+
+    .feature-card p {
+      color: var(--gray-700);
+      font-size: 1rem;
+      margin-bottom: 18px;
+    }
+
+    .feature-specs {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .spec {
+      background: linear-gradient(135deg, rgba(106, 27, 154, 0.06), rgba(139, 195, 74, 0.08));
+      padding: 18px 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(106, 27, 154, 0.08);
+    }
+
+    .spec strong {
+      display: block;
+      color: var(--violet-500);
+      font-size: 1.1rem;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+
+    .spec span {
+      color: var(--gray-700);
+      font-size: 0.94rem;
+    }
+
+    .about-visual {
+      background: linear-gradient(135deg, rgba(106, 27, 154, 0.92), rgba(83, 163, 40, 0.82));
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      box-shadow: var(--shadow-soft);
+      color: var(--white);
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-visual::before {
+      content: "";
+      position: absolute;
+      width: 230px;
+      height: 230px;
+      right: -50px;
+      top: -40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .about-visual::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      left: -30px;
+      bottom: -80px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .about-visual-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-visual-content h4 {
+      font-size: clamp(1.7rem, 2vw, 2.5rem);
+      letter-spacing: -0.05em;
+      margin-bottom: 16px;
+    }
+
+    .about-visual-content p {
+      font-size: 1rem;
+      opacity: 0.95;
+      max-width: 420px;
+    }
+
+    .vision-mission {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+    }
+
+    .vision-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(106, 27, 154, 0.06);
+      padding: 28px;
+    }
+
+    .icon-badge {
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(106, 27, 154, 0.12), rgba(139, 195, 74, 0.16));
+      color: var(--violet-500);
+      font-size: 1.8rem;
+      margin-bottom: 18px;
+    }
+
+    .vision-card h4 {
+      font-size: 1.6rem;
+      letter-spacing: -0.04em;
+      margin-bottom: 12px;
+      color: var(--gray-900);
+    }
+
+    .vision-card p {
+      color: var(--gray-700);
+      font-size: 1rem;
+    }
+
+    .academics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .academic-card {
+      background: var(--white);
+      border-radius: 22px;
+      padding: 26px 22px;
+      border: 1px solid rgba(106, 27, 154, 0.08);
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .academic-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--violet-500), var(--green-500));
+    }
+
+    .academic-card h4 {
+      color: var(--violet-500);
+      font-size: 1.4rem;
+      margin: 18px 0 12px;
+      letter-spacing: -0.04em;
+    }
+
+    .academic-card p {
+      color: var(--gray-700);
+      font-size: 0.96rem;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .why-card {
+      background: var(--white);
+      border-radius: 20px;
+      border: 1px solid rgba(106, 27, 154, 0.06);
+      box-shadow: var(--shadow-card);
+      padding: 24px 20px;
+    }
+
+    .why-card .icon-badge {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      font-size: 1.5rem;
+      margin-bottom: 14px;
+    }
+
+    .why-card h4 {
+      margin-bottom: 10px;
+      color: var(--gray-900);
+      font-size: 1.2rem;
+      letter-spacing: -0.03em;
+    }
+
+    .why-card p {
+      color: var(--gray-700);
+      font-size: 0.95rem;
+    }
+
+    .admission-wrap {
+      background: linear-gradient(135deg, var(--violet-500), var(--green-500));
+      border-radius: 30px;
+      color: var(--white);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+    }
+
+    .admission-copy {
+      padding: 42px 38px;
+    }
+
+    .admission-copy h3 {
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      line-height: 1.15;
+      letter-spacing: -0.05em;
+      margin-bottom: 12px;
+    }
+
+    .admission-copy p {
+      max-width: 620px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.02rem;
+    }
+
+    .admission-steps {
+      display: grid;
+      gap: 12px;
+      padding: 32px 28px 32px 0;
+    }
+
+    .step {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .step-number {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.14);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+
+    .step span {
+      font-size: 0.96rem;
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    .contact-card {
+      background: var(--white);
+      border-radius: 24px;
+      border: 1px solid rgba(106, 27, 154, 0.07);
+      box-shadow: var(--shadow-card);
+      padding: 28px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .contact-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .contact-item .icon-badge {
+      margin-bottom: 0;
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      font-size: 1.4rem;
+    }
+
+    .contact-item strong {
+      display: block;
+      color: var(--gray-900);
+      font-size: 1.02rem;
+      margin-bottom: 4px;
+    }
+
+    .contact-item a,
+    .contact-item p {
+      color: var(--gray-700);
+      font-size: 0.98rem;
+    }
+
+    .contact-panel {
+      background: linear-gradient(180deg, rgba(106, 27, 154, 0.94), rgba(74, 113, 50, 0.9));
+      border-radius: 24px;
+      color: var(--white);
+      box-shadow: var(--shadow-soft);
+      padding: 28px;
+    }
+
+    .contact-panel h4 {
+      font-size: 1.8rem;
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+      margin-bottom: 16px;
+    }
+
+    .contact-panel p {
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 20px;
+    }
+
+    .quick-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .quick-actions a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-weight: 800;
+    }
+
+    footer {
+      background: #1d1426;
+      color: rgba(255, 255, 255, 0.74);
+      padding: 24px 0 26px;
+      text-align: center;
+      font-size: 0.94rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero-inner,
+      .about-grid,
+      .contact-grid,
+      .admission-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .academics-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .why-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .admission-steps {
+        padding: 0 24px 24px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .topbar-inner,
+      .nav-inner {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .nav-links {
+        justify-content: center;
+      }
+
+      .hero {
+        padding-top: 62px;
+      }
+
+      .hero-copy h2 {
+        font-size: 2.5rem;
+      }
+
+      .hero-stats,
+      .feature-specs,
+      .vision-mission,
+      .academics-grid,
+      .why-grid,
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stats {
+        display: grid;
+      }
+
+      .stat {
+        width: 100%;
+      }
+
+      .nav-cta {
+        width: 100%;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .hero-actions {
+        display: grid;
+        width: 100%;
+      }
+
+      section {
+        padding: 74px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand" aria-label="Fathul Majyid Academy Kafur">
+        <div class="brand-mark">F</div>
+        <div class="brand-text">
+          <h1>Fathul Majyid Academy Kafur</h1>
+          <p>Inculcating Moral Values Towards Islam</p>
+        </div>
+      </div>
+
+      <div class="topbar-meta" aria-label="School contact information">
+        <span>📍 Kafur, Katsina State</span>
+        <span>📞 08064389206</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="navbar" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#vision">Vision</a>
+        <a href="#mission">Mission</a>
+        <a href="#academics">Academics</a>
+        <a href="#why-us">Why Choose Us</a>
+        <a href="#contact">Contact</a>
+        <a href="#admission">Admission</a>
+      </div>
+      <a class="nav-cta" href="tel:08064389206">Call Now</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <span class="eyebrow">A foundation for excellence</span>
+          <h2>Learning with <span class="accent">faith</span>, discipline, and purpose.</h2>
+          <p>
+            Fathul Majyid Academy Kafur is committed to nurturing knowledge, character, and strong Islamic moral values in a supportive learning environment.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#about">Discover Our School</a>
+            <a class="button button-secondary" href="#contact">Contact Us</a>
+          </div>
+
+          <div class="hero-stats" aria-label="Quick highlights">
+            <div class="stat">
+              <strong>Nursery</strong>
+              <span>Early learning</span>
+            </div>
+            <div class="stat">
+              <strong>Primary</strong>
+              <span>Foundation stage</span>
+            </div>
+            <div class="stat">
+              <strong>Junior</strong>
+              <span>Growth and guidance</span>
+            </div>
+            <div class="stat">
+              <strong>Senior</strong>
+              <span>Academic readiness</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card" aria-label="School overview panel">
+          <div class="mini-panel">
+            <div class="label">School</div>
+            <strong>Fathul Majyid Academy Kafur</strong>
+            <p>Located in Kafur Local Government Area, Katsina State, Nigeria.</p>
+          </div>
+
+          <div class="info-grid">
+            <div class="info-box">
+              <span>Core focus</span>
+              <p>Academic excellence strengthened by Islamic moral values.</p>
+            </div>
+            <div class="info-box">
+              <span>Student growth</span>
+              <p>Discipline, character, and responsible learning.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-header">
+          <small>About us</small>
+          <h3>Education rooted in character and purpose</h3>
+        </div>
+
+        <div class="about-grid">
+          <div class="feature-card">
+            <p>
+              Fathul Majyid Academy Kafur is an educational institution dedicated to helping learners develop knowledge, discipline, and strong Islamic moral values.
+            </p>
+            <p>
+              The school supports students from Nursery and Primary through Junior and Senior levels, creating a learning journey that balances academic development with personal responsibility and character formation grounded in Islamic teachings.
+            </p>
+
+            <div class="feature-specs">
+              <div class="spec">
+                <strong>🎓 Academics</strong>
+                <span>Rigorous, contemporary curriculum</span>
+              </div>
+              <div class="spec">
+                <strong>✨ Character</strong>
+                <span>Discipline and Islamic moral values</span>
+              </div>
+              <div class="spec">
+                <strong>🌱 Growth</strong>
+                <span>Supportive environment for all learners</span>
+              </div>
+              <div class="spec">
+                <strong>🤝 Community</strong>
+                <span>Collaborative learning culture</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-visual">
+            <div class="about-visual-content">
+              <h4>Our Commitment</h4>
+              <p>We create an educational environment where learners thrive academically while developing strong moral character and responsibility, guided by Islamic values.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-header">
+          <small>Our Mission & Vision</small>
+          <h3>Guiding our educational journey</h3>
+        </div>
+
+        <div class="vision-mission">
+          <div class="vision-card" id="vision">
+            <div class="icon-badge">🎯</div>
+            <h4>Vision</h4>
+            <p>To be a leading educational institution that nurtures academically excellent, morally upright, and socially responsible learners grounded in Islamic values.</p>
+          </div>
+
+          <div class="vision-card" id="mission">
+            <div class="icon-badge">🔄</div>
+            <h4>Mission</h4>
+            <p>To provide quality education that integrates academic excellence with Islamic moral values, preparing students for success while maintaining character and discipline.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="academics">
+      <div class="container">
+        <div class="section-header">
+          <small>Academic Levels</small>
+          <h3>Structured education for every stage</h3>
+        </div>
+
+        <div class="academics-grid">
+          <div class="academic-card">
+            <span class="icon-badge">👶</span>
+            <h4>Nursery</h4>
+            <p>Early childhood development with foundational learning and social skills in a nurturing environment.</p>
+          </div>
+
+          <div class="academic-card">
+            <span class="icon-badge">📚</span>
+            <h4>Primary</h4>
+            <p>Building strong academic foundations in literacy, numeracy, and character development.</p>
+          </div>
+
+          <div class="academic-card">
+            <span class="icon-badge">🌟</span>
+            <h4>Junior</h4>
+            <p>Expanding knowledge across multiple disciplines with emphasis on critical thinking and discipline.</p>
+          </div>
+
+          <div class="academic-card">
+            <span class="icon-badge">🚀</span>
+            <h4>Senior</h4>
+            <p>Advanced academic preparation for higher education and life success, grounded in values.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="why-us">
+      <div class="container">
+        <div class="section-header">
+          <small>Why Choose Fathul Majyid Academy</small>
+          <h3>Excellence in education and character</h3>
+        </div>
+
+        <div class="why-grid">
+          <div class="why-card">
+            <div class="icon-badge">🎓</div>
+            <h4>Quality Education</h4>
+            <p>Rigorous, contemporary curriculum delivered by dedicated educators.</p>
+          </div>
+
+          <div class="why-card">
+            <div class="icon-badge">💚</div>
+            <h4>Islamic Values</h4>
+            <p>Character formation rooted in Islamic moral and ethical principles.</p>
+          </div>
+
+          <div class="why-card">
+            <div class="icon-badge">🤝</div>
+            <h4>Supportive Community</h4>
+            <p>Collaborative environment nurturing academic and personal growth.</p>
+          </div>
+
+          <div class="why-card">
+            <div class="icon-badge">🌍</div>
+            <h4>Holistic Development</h4>
+            <p>Balanced approach to academics, character, discipline, and responsibility.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="admission">
+      <div class="container">
+        <div class="admission-wrap">
+          <div class="admission-copy">
+            <h3>Ready to Join Our School?</h3>
+            <p>
+              Fathul Majyid Academy Kafur welcomes inquiries from families seeking quality education rooted in character and Islamic values. Contact us to learn more about admission.
+            </p>
+          </div>
+
+          <div class="admission-steps">
+            <div class="step">
+              <div class="step-number">1</div>
+              <span>Contact the school for information</span>
+            </div>
+            <div class="step">
+              <div class="step-number">2</div>
+              <span>Visit and tour the campus</span>
+            </div>
+            <div class="step">
+              <div class="step-number">3</div>
+              <span>Complete the application process</span>
+            </div>
+            <div class="step">
+              <div class="step-number">4</div>
+              <span>Begin your learning journey</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-header">
+          <small>Get in touch</small>
+          <h3>Contact Fathul Majyid Academy Kafur</h3>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="contact-list">
+              <div class="contact-item">
+                <div class="icon-badge">📍</div>
+                <div>
+                  <strong>Location</strong>
+                  <p>Kafur Local Government Area, Katsina State, Nigeria</p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="icon-badge">📞</div>
+                <div>
+                  <strong>Phone</strong>
+                  <a href="tel:08064389206">08064389206</a><br>
+                  <a href="tel:07042861543">07042861543</a>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="icon-badge">✉️</div>
+                <div>
+                  <strong>Email</strong>
+                  <a href="mailto:fathulmajyidacademy@gmail.com">fathulmajyidacademy@gmail.com</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-panel">
+            <h4>Quick Contact</h4>
+            <p>Reach out to us for inquiries about admission, programs, or any questions about the school.</p>
+
+            <div class="quick-actions">
+              <a href="tel:08064389206">📞 Call Now</a>
+              <a href="mailto:fathulmajyidacademy@gmail.com">✉️ Email Us</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Fathul Majyid Academy Kafur. All rights reserved. Inculcating Moral Values Towards Islam.</p>
+    </div>
+  </footer>
+</body>
+</html>
